@@ -1,0 +1,22 @@
+{
+    "name": "NVIDIA DGL Container",
+    "image": "nvcr.io/nvidia/dgl:24.09-py3",
+    "workspaceFolder": "/workspace",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        "python.pythonPath": "/usr/local/bin/python"  // Ensure Python path aligns with container setup
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"  // Add other extensions you need
+    ],
+    //"postCreateCommand": "pip install -r requirements.txt",  // Optional: Install project dependencies
+    "mounts": [
+        "source=/home/ben/code/gnns,target=/workspace,type=bind"  // Adjust with the path to your project folder
+    ],
+    "runArgs": [
+        "--gpus=all"  // Enables GPU access for the container
+    ],
+    "forwardPorts": [8000]//,  // Forward any required ports
+    //"remoteUser": "root"  // Set user to root if needed
+}
